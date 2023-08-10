@@ -1,13 +1,14 @@
 import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
-import photos from "mocks/photos";
 
-const PhotoList = () => {
+const PhotoList = ({ photos, addFavPhoto }) => {
 
   const photosArr = photos.map(obj => {
     const { id, location, urls, user } = obj;
-    return <PhotoListItem key={id} location={location} imageSource={urls.full} username={user.name} profile={user.profile} />;
+
+    return (
+      <PhotoListItem key={id} location={location} imageSource={urls.full} username={user.name} profile={user.profile} addFavPhoto={() => addFavPhoto(id)} />);
   });
 
   return (
