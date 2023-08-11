@@ -13,10 +13,21 @@ const App = () => {
   };
   const hideModal = () => setModal({ ...modal, show: false });
 
+  const [favPhotos, setFavPhotos] = useState([]);
+  const toggleFavPhoto = (id) => {
+    if (favPhotos.includes(id)) {
+      const updatedFavPhotos = favPhotos.filter(photoId => photoId !== id);
+      setFavPhotos(updatedFavPhotos);
+    } else {
+      setFavPhotos([...favPhotos, id]);
+    }
+    console.log(favPhotos);
+  };
+
   return (
     <div className="App">
-      <HomeRoute showModal={showModal} />
-      <PhotoDetailsModal {...modal} hideModal={hideModal} />
+      <HomeRoute showModal={showModal} toggleFavPhoto={toggleFavPhoto} favPhotos={favPhotos} />
+      <PhotoDetailsModal {...modal} hideModal={hideModal} toggleFavPhoto={toggleFavPhoto} favPhotos={favPhotos} />
     </div>
   );
 };

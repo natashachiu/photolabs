@@ -5,22 +5,14 @@ import topics from "mocks/topics";
 import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
 
-const HomeRoute = ({ showModal }) => {
-  const [favPhotos, setFavPhotos] = useState([]);
-  const toggleFavPhoto = (id) => {
-    if (favPhotos.includes(id)) {
-      const updatedFavPhotos = favPhotos.filter(photoId => photoId !== id);
-      setFavPhotos(updatedFavPhotos);
-    } else {
-      setFavPhotos([...favPhotos, id]);
-    }
-  };
+const HomeRoute = ({ showModal, toggleFavPhoto, favPhotos }) => {
+
 
 
   return (
     <div className="home-route">
       <TopNavigation topics={topics} favPhotos={favPhotos.length} />
-      <PhotoList photos={photos} toggleFavPhoto={toggleFavPhoto} showModal={showModal} />
+      <PhotoList photos={photos} toggleFavPhoto={toggleFavPhoto} favPhotos={favPhotos} showModal={showModal} />
     </div>
   );
 };
