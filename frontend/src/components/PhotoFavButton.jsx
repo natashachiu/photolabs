@@ -2,12 +2,12 @@ import React, { useCallback, useState } from 'react';
 import '../styles/PhotoFavButton.scss';
 import FavBadge from './FavBadge';
 
-const PhotoFavButton = (props) => {
+const PhotoFavButton = ({ onClick, fill }) => {
 
   return (
-    <div className="photo-list__fav-icon" onClick={props.onClick}>
+    <div className="photo-list__fav-icon" onClick={onClick}>
       <div className="photo-list__fav-icon-svg">
-        <FavBadge fill={props.fill} />
+        <FavBadge fill={fill} />
       </div>
     </div>
   );

@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
 
 
-const PhotoListItem = ({ location, imageSource, username, profile, addFavPhoto }) => {
-  const [fill, setFill] = useState(null);
-  const addFill = () => {
+const PhotoListItem = ({ location, imageSource, username, profile, addFavPhoto, onClick }) => {
+
+  const [fill, setFill] = useState(false);
+  const addFav = () => {
     addFavPhoto();
-    return setFill(true);
+    setFill(true);
   };
 
   return (
     <li className="photo-list__item">
-      <PhotoFavButton onClick={addFill} fill={fill} />
-      <img className="photo-list__image" src={imageSource} alt="" />
+      <PhotoFavButton onClick={addFav} fill={fill} />
+      <img className="photo-list__image" src={imageSource} alt="" onClick={onClick} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={profile} alt="" />
 
