@@ -5,16 +5,18 @@ import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
 
 const App = () => {
-  const [modal, setModal] = useState(false);
+  const initialState = { show: false, photo: null };
+  const [modal, setModal] = useState(initialState);
 
-  const showModal = () => setModal(true);
-  const hideModal = () => setModal(false);
+  const showModal = (photo) => {
+    setModal({ show: true, photo });
+  };
+  const hideModal = () => setModal({ ...modal, show: false });
 
   return (
     <div className="App">
       <HomeRoute showModal={showModal} />
-      {/* <button type='button' onClick={showModal}>open</button> */}
-      <PhotoDetailsModal modal={modal} hideModal={hideModal} />
+      <PhotoDetailsModal {...modal} hideModal={hideModal} />
     </div>
   );
 };

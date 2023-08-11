@@ -2,13 +2,13 @@ import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
-const PhotoList = ({ photos, addFavPhoto, showModal }) => {
+const PhotoList = ({ photos, toggleFavPhoto, showModal }) => {
 
-  const photosArr = photos.map(({ id, location, urls, user }) => (
+  const photosArr = photos.map((photo) => (
     <PhotoListItem
-      key={id} location={location} imageSource={urls.full}
-      username={user.name} profile={user.profile}
-      addFavPhoto={() => addFavPhoto(id)} onClick={showModal} />
+      key={photo.id} {...photo}
+      toggleFavPhoto={() => toggleFavPhoto(photo.id)}
+      onClick={() => showModal(photo)} />
   ));
 
   return (
