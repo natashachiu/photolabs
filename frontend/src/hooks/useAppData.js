@@ -1,29 +1,46 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
+
+const reducer = (state, action) => {
+  if (action.type === 'SHOW_MODAL') {
+    return { ...state, modal: { show: true, photo: action.payload } };
+
+  } else if (action.type === 'HIDE_MODAL') {
+    return { ...state, modal: { ...state.modal, show: false } };
+
+  } else if (action.type === 'TOGGLE_FAV_PHOTO') {
+    if (state.favPhotos.includes(action.payload)) {
+      const updatedFavPhotos = state.favPhotos.filter(
+        (photoId) => photoId !== action.payload);
+      return { ...state, favPhotos: updatedFavPhotos };
+
+    } else {
+      return { ...state, favPhotos: [...state.favPhotos, action.payload] };
+    }
+  }
+
+  return state;
+};
+
 
 const useAppData = () => {
-  const initialState = { show: false, photo: null };
-  const [modal, setModal] = useState(initialState || {});
-  const [favPhotos, setFavPhotos] = useState([]);
+  const initialState = {
+    modal: { show: false, photo: null },
+    favPhotos: []
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const showModal = (photo) => {
-    setModal({ show: true, photo });
+    dispatch({ type: 'SHOW_MODAL', payload: photo });
   };
-
   const hideModal = () => {
-    setModal({ ...modal, show: false });
+    dispatch({ type: 'HIDE_MODAL' });
   };
-
   const toggleFavPhoto = (id) => {
-    if (favPhotos.includes(id)) {
-      const updatedFavPhotos = favPhotos.filter((photoId) => photoId !== id);
-      setFavPhotos(updatedFavPhotos);
-    } else {
-      setFavPhotos([...favPhotos, id]);
-    }
+    dispatch({ type: 'TOGGLE_FAV_PHOTO', payload: id });
   };
 
   return {
-    state: { modal, favPhotos },
+    state: { modal: state.modal, favPhotos: state.favPhotos },
     showModal,
     hideModal,
     toggleFavPhoto
