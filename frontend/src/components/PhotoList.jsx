@@ -9,7 +9,8 @@ const PhotoList = ({ photos, toggleFavPhoto, favPhotos, showModal }) => {
       key={photo.id} {...photo}
       toggleFavPhoto={() => toggleFavPhoto(photo.id)}
       favPhotos={favPhotos}
-      onClick={() => showModal(photo)} />
+      onClick={() => showModal(photo)}
+    />
   ));
 
   return (

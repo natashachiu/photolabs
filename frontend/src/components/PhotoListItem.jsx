@@ -6,7 +6,6 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = ({ id, location, urls, user: { name, profile }, toggleFavPhoto, favPhotos, onClick }) => {
 
   // const [fill, setFill] = useState(false);
-
   // const toggleFav = () => {
   //   toggleFavPhoto();
   //   setFill(!fill);

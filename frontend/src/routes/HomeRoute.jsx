@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/HomeRoute.scss';
-import photos from 'mocks/photos';
-import topics from "mocks/topics";
 import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
 
-const HomeRoute = ({ showModal, toggleFavPhoto, favPhotos }) => {
-
-
-
+const HomeRoute = ({ showModal, toggleFavPhoto, favPhotos, photos, topics }) => {
   return (
     <div className="home-route">
       <TopNavigation topics={topics} favPhotos={favPhotos.length} />
