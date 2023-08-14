@@ -1,7 +1,11 @@
 # react-photolabs
-The PhotoLabs project for the Web Development React course programming.
-
+Photolabs is a React-based single-page application that allows users to view photos in different contexts.
 # Photolabs
+
+!["Screenshot of home page"]()
+!["Screenshot of modal"](h)
+!["Screenshot of animals topic page"]()
+
 
 ## Setup
 
