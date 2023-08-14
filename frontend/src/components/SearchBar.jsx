@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/SearchBar.scss';
 import useSearchBar from 'hooks/useSearchBar';
+import SearchIcon from './SearchIcon';
 
 const SearchBar = ({ onSubmit }) => {
   const { handleSubmit, searchTerm, setSearchTerm } = useSearchBar(onSubmit);
 
   return (
     <form className='SearchBar' onSubmit={handleSubmit}>
-      <input type='text' placeholder='Search...'
+      <SearchIcon />
+      <input type='text' placeholder='Search...' autoComplete='off'
         name='searchTerm' value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)} />
-      <button type='submit'>Search</button>
+      <input type='submit' hidden />
     </form>
   );
 };

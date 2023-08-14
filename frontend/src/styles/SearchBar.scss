@@ -1,0 +1,22 @@
+.SearchBar {
+  size: 60px;
+  border: 2px solid #e1e1e1;
+  display: flex;
+  border-radius: 500px;
+  padding: 10px;
+}
+
+.SearchBar input {
+  font-size: 0.9em;
+  padding: 0 0.5em;
+  border: 0;
+  background: transparent;
+  outline: none;
+  width: 70px;
+  transition: width 0.25s cubic-bezier(.16, 1, .3, 1);
+  ;
+}
+
+.SearchBar input:focus {
+  width: 100%;
+}
