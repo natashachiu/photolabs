@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 const useSearchBar = (onSubmit) => {
   const [searchTerm, setSearchTerm] = useState("");
-  // console.log(searchTerm);
 
   const handleSubmit = (e) => {
     e.preventDefault();
