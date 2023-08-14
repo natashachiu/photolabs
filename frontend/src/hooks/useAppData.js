@@ -72,6 +72,11 @@ const useAppData = () => {
       .catch(error => console.log('Error:', error));
   };
 
+  const searchPhotos = (searchTerm) => {
+    axios.get(`api/search/${searchTerm}`)
+      .then(res => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: res.data }))
+      .catch(error => console.log('Error:', error));
+  };
 
   const showModal = (photo) => {
     dispatch({ type: ACTIONS.SHOW_MODAL, payload: photo });
@@ -93,7 +98,8 @@ const useAppData = () => {
     showModal,
     hideModal,
     toggleFavPhoto,
-    onLoadTopic
+    onLoadTopic,
+    searchPhotos
   };
 };
 

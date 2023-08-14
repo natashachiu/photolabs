@@ -8,10 +8,11 @@ const cors = require("cors");
 
 const app = express();
 
-const db = require("./db")
+const db = require("./db");
 
 const photos = require("./routes/photos");
 const topics = require("./routes/topics");
+const search = require("./routes/search");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -38,6 +39,7 @@ module.exports = function application(
 
   app.use("/api", photos(db));
   app.use("/api", topics(db));
+  app.use("/api", search(db));
 
   if (ENV === "development" || ENV === "test") {
     Promise.all([
