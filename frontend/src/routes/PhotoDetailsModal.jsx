@@ -21,7 +21,7 @@ const PhotoDetailsModal = ({ show, photo, hideModal, toggleFavPhoto, favPhotos }
 
       <header className="photo-details-modal__header">Similar Photos</header>
       {photo && <PhotoList className="photo-details-modal__images"
-        photos={Object.values(photo.similarPhotos)}
+        photos={Object.values(photo.similar_photos)}
         toggleFavPhoto={toggleFavPhoto} favPhotos={favPhotos}
         showModal={() => { }} />}
 

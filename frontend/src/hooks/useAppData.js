@@ -4,6 +4,7 @@ const ACTIONS = {
   SHOW_MODAL: 'SHOW_MODAL',
   HIDE_MODAL: 'HIDE_MODAL',
   TOGGLE_FAV_PHOTO: 'TOGGLE_FAV_PHOTO',
+  // ON_LOAD_TOPIC: 'ON_LOAD_TOPIC',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA'
 };
@@ -59,6 +60,18 @@ const useAppData = () => {
       .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
   }, []);
 
+  const onLoadTopic = (topicId) => {
+    fetch(`api/topics/photos/${topicId}`)
+      .then(res => res.json())
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch(error => console.log('Error:', error));
+  };
+  // useEffect((topicId) => {
+  //   fetch(`api/topics/photos/${topicId}`)
+  //     .then(res => res.json())
+  //     .then(data => dispatch({ type: ACTIONS.LOAD_TOPIC, payload: data }));
+  // },[]);
+
 
   const showModal = (photo) => {
     dispatch({ type: ACTIONS.SHOW_MODAL, payload: photo });
@@ -79,7 +92,8 @@ const useAppData = () => {
     },
     showModal,
     hideModal,
-    toggleFavPhoto
+    toggleFavPhoto,
+    onLoadTopic
   };
 };
 

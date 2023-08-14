@@ -9,13 +9,14 @@ const App = () => {
     state: { modal, favPhotos, photoData, topicData },
     showModal,
     hideModal,
-    toggleFavPhoto
+    toggleFavPhoto,
+    onLoadTopic
   } = useAppData();
 
 
   return (
     <div className="App">
-      <HomeRoute showModal={showModal} toggleFavPhoto={toggleFavPhoto} favPhotos={favPhotos} topics={topicData} photos={photoData} />
+      <HomeRoute showModal={showModal} toggleFavPhoto={toggleFavPhoto} favPhotos={favPhotos} onLoadTopic={onLoadTopic} topics={topicData} photos={photoData} />
       <PhotoDetailsModal {...modal} hideModal={hideModal} toggleFavPhoto={toggleFavPhoto} favPhotos={favPhotos} />
     </div>
   );
