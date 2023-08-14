@@ -1,10 +1,12 @@
 # react-photolabs
 Photolabs is a React-based single-page application that allows users to view photos in different contexts.
 # Photolabs
-
-!["Screenshot of home page"]()
-!["Screenshot of modal"](h)
-!["Screenshot of animals topic page"]()
+#### Home
+!["Screenshot of home page"](https://github.com/natashachiu/photolabs/blob/main/docs/home.png?raw=true)
+#### Modal: Larger version of photo and relevant photos
+!["Screenshot of modal"](https://github.com/natashachiu/photolabs/blob/main/docs/modal.png?raw=true)
+#### Photo category: Animals
+!["Screenshot of animals topic page"](https://github.com/natashachiu/photolabs/blob/main/docs/animals-topic.png?raw=true)
 
 
 ## Setup
