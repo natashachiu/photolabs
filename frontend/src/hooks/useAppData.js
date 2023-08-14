@@ -1,10 +1,10 @@
 import { useReducer, useEffect } from 'react';
+import axios from 'axios';
 
 const ACTIONS = {
   SHOW_MODAL: 'SHOW_MODAL',
   HIDE_MODAL: 'HIDE_MODAL',
   TOGGLE_FAV_PHOTO: 'TOGGLE_FAV_PHOTO',
-  // ON_LOAD_TOPIC: 'ON_LOAD_TOPIC',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA'
 };
@@ -49,28 +49,28 @@ const useAppData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    fetch('/api/photos')
-      .then(res => res.json())
-      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }));
+    const photoPromise = axios.get('/api/photos');
+    const topicPromise = axios.get('/api/topics');
+
+    const promises = [photoPromise, topicPromise];
+
+    Promise.all(promises)
+      .then(resArr => {
+        const photos = resArr[0].data;
+        const topics = resArr[1].data;
+
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
+      })
+      .catch(error => console.log('Error:', error));
   }, []);
 
-  useEffect(() => {
-    fetch('/api/topics')
-      .then(res => res.json())
-      .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
-  }, []);
 
   const onLoadTopic = (topicId) => {
-    fetch(`api/topics/photos/${topicId}`)
-      .then(res => res.json())
-      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+    axios.get(`api/topics/photos/${topicId}`)
+      .then(res => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: res.data }))
       .catch(error => console.log('Error:', error));
   };
-  // useEffect((topicId) => {
-  //   fetch(`api/topics/photos/${topicId}`)
-  //     .then(res => res.json())
-  //     .then(data => dispatch({ type: ACTIONS.LOAD_TOPIC, payload: data }));
-  // },[]);
 
 
   const showModal = (photo) => {

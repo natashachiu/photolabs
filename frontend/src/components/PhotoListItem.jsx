@@ -1,15 +1,9 @@
-import React, { useState } from "react";
+import React from 'react';
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = ({ id, location, urls, user: { name, profile }, toggleFavPhoto, favPhotos, onClick }) => {
-
-  // const [fill, setFill] = useState(false);
-  // const toggleFav = () => {
-  //   toggleFavPhoto();
-  //   setFill(!fill);
-  // };
 
   return (
     <li className="photo-list__item">
