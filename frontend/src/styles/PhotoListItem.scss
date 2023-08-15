@@ -9,6 +9,10 @@
   background-color: #FFFFFF;
 }
 
+.photo-list__item:hover {
+  box-shadow: 4px 4px 5px 0 rgba(0, 0, 0, 0.076);
+}
+
 .photo-list__image {
   user-select: none;
   width: 300px;
