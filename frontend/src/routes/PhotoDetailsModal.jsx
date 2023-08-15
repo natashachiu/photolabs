@@ -4,7 +4,7 @@ import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = ({ show, photo, hideModal, toggleFavPhoto, favPhotos }) => {
+const PhotoDetailsModal = ({ show, photo, hideModal, toggleFavPhoto, isFav }) => {
 
   const displayModal = show ? "" : "display-none";
 
@@ -15,14 +15,14 @@ const PhotoDetailsModal = ({ show, photo, hideModal, toggleFavPhoto, favPhotos }
       </button>
       <div className='photo-details-modal__image-container'>
         <PhotoFavButton onClick={() => toggleFavPhoto(photo.id)}
-          fill={photo && favPhotos.includes(photo.id)} />
+          fill={photo && isFav(photo.id)} />
         {photo && <img className="photo-details-modal__image" src={photo.urls.full} alt="larger version photo" />}
       </div>
 
       <header className="photo-details-modal__header">Similar Photos</header>
       {photo && <PhotoList className="photo-details-modal__images"
         photos={Object.values(photo.similar_photos)}
-        toggleFavPhoto={toggleFavPhoto} favPhotos={favPhotos}
+        toggleFavPhoto={toggleFavPhoto} isFav={isFav}
         showModal={() => { }} />}
 
     </div >

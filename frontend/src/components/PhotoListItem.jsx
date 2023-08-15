@@ -3,12 +3,12 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 
-const PhotoListItem = ({ id, location, urls, user: { name, profile }, toggleFavPhoto, favPhotos, onClick }) => {
+const PhotoListItem = ({ location, urls, user: { name, profile }, toggleFavPhoto, isFav, onClick }) => {
 
   return (
     <li className="photo-list__item">
       <PhotoFavButton onClick={toggleFavPhoto}
-        fill={favPhotos.includes(id)} />
+        fill={isFav} />
       <img className="photo-list__image" src={urls.regular} alt="img" onClick={onClick} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={profile} alt="profile img" />
